@@ -1,0 +1,67 @@
+name: Bug report
+description: Report a reproducible problem in the template, skills, validator, or documentation.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Metonia. Remove private data, credentials, and machine-specific paths before submitting.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Vault template
+        - Company or project context
+        - Learning skill
+        - Video skill
+        - Pi context resolver or task agent
+        - Validator or CI
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Provide the smallest safe sequence that reproduces the problem.
+      placeholder: |
+        1. Copy the template to a temporary directory
+        2. Load ...
+        3. Ask ...
+        4. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Agent host, model/version if relevant, operating system, editor, and Metonia commit or release.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Safe evidence
+      description: Add sanitized logs, validator output, or links. Do not paste secrets or private vault content.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I removed private data, credentials, and machine-specific paths.
+          required: true
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: This is not a sensitive security report.
+          required: true

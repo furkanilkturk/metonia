@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Sensitive security report
+    url: https://github.com/furkanilkturk/metonia/security/advisories/new
+    about: Report credentials, private data, or vulnerabilities privately instead of opening a public issue.

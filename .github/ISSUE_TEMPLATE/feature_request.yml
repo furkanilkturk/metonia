@@ -1,0 +1,43 @@
+name: Feature request
+description: Propose a portable improvement to Metonia's vault, skills, or documentation.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What agent-space, durable-context, learning, or studio problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Explain the smallest provider-neutral change that would help.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Could an existing space, Markdown page, AGENTS.md, scoped skill, or external retrieval already solve it?
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Success evidence
+      description: How could the improvement be tested or benchmarked without invented measurements?
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Project constraints
+      options:
+        - label: The proposal can remain generic and provider-neutral.
+          required: true
+        - label: The copied vault can remain dependency-free and local-first.
+          required: true
+        - label: I removed private or customer-specific information.
+          required: true
