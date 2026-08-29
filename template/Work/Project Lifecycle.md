@@ -14,13 +14,23 @@ out of coding-agent context.
 ## Register an existing project
 
 1. Confirm that the repository has its intended canonical Git remote.
-2. Start Pi from `Work/` and invoke
-   `/skill:project-learning register-existing`, including the repository path.
-3. The skill inspects the repository and proposes the company, project name,
+2. Either start Pi from `Work/`, or load only the curator skill while starting
+   Pi directly inside the external repository:
+
+   ```powershell
+   pi --skill "$env:METONIA_VAULT\Work\.agents\skills\project-learning"
+   ```
+
+   The explicit load applies only to this registration session, so normal
+   coding sessions remain lean.
+3. Invoke `/skill:project-learning register-existing`. Include the repository
+   path when Pi is running from `Work/`; the current directory is used when Pi
+   is running inside the repository.
+4. The skill inspects the repository and proposes the company, project name,
    canonical remote, outcome, boundaries, and exact target files.
-4. Approve or correct the proposal. Registration writes only after the company,
+5. Approve or correct the proposal. Registration writes only after the company,
    project, remote, and paths are explicit.
-5. Future coding sessions may use `metonia_context` from that repository to
+6. Future coding sessions may use `metonia_context` from that repository to
    load only the matched `Company.md` and `Project.md` on demand.
 
 If the company already exists, the project inherits it. Do not duplicate
@@ -30,8 +40,9 @@ company policy in `Project.md`.
 
 1. Create and initialize the repository through the normal development flow.
 2. Decide its company, name, outcome, boundaries, owner, and canonical remote.
-3. Start Pi from `Work/` and invoke
-   `/skill:project-learning register-new` with the repository path.
+3. Start Pi from `Work/`, or start it inside the repository with the same
+   one-session `--skill` command above, and invoke
+   `/skill:project-learning register-new`.
 4. Review the proposed company/project skeleton and approve the exact write.
 
 Registration does not initialize, clone, move, or modify the repository. It
@@ -40,9 +51,9 @@ creates the durable Metonia mapping around a repository that already exists.
 ## Update knowledge after project changes
 
 1. Finish implementation, tests, and review in the coding repository.
-2. In a separate Work curator session, invoke
-   `/skill:project-learning propose-update` with the repository path and the
-   verified change evidence.
+2. In a separate Work curator session, or from the repository with the same
+   one-session `--skill` command above, invoke
+   `/skill:project-learning propose-update` with the verified change evidence.
 3. Accept only facts that will remain useful: architecture boundaries,
    operating rules, accepted decisions, quality/release practice, or a changed
    repository identity.
