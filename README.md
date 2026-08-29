@@ -16,7 +16,7 @@ template/
   Learning/                         evidence-backed learning
     .agents/skills/                 doc-learning, video-learning
   Work/                             company and project context
-    .agents/skills/                 project-learning, project-planning
+    .agents/skills/                 project-planning
     Companies/<Company>/Projects/<Project>/
   Studio/Video/                     video research and concepts
     .agents/skills/                 video-research, video-concept, video-review
@@ -48,8 +48,10 @@ show the shape.
 
 Pi chooses an agent space from its working directory, not from the note selected
 in Obsidian. The companion Pi package provides `/metonia` to show the current
-space and active skill commands. Its two small global skills route context and
-decision interviews; learning, Work, and video workflows remain folder-scoped.
+space and active skill commands. Its three global skills route context, run
+decision interviews, and let `project-learning` register or curate a repository
+from wherever Pi is running. Learning, project planning, and video workflows
+remain folder-scoped.
 
 Its `task_agents` tool is adaptive rather than a mandatory pipeline. The parent
 agent remains responsible for work it can handle directly. It delegates only

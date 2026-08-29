@@ -17,12 +17,13 @@ the canonical repository remote and its parent company supplies how work is
 actually done. See [[Companies/Index]], [[Companies/_templates/Company]], and
 [[Project Lifecycle]].
 
-## Local pack
+## Skills
 
-`project-learning` and `project-planning` belong only in
-`Work/.agents/skills/`. The former registers or curates company/project context;
-the latter creates intentional plans under a project's `Plans/` directory.
-Neither may silently change company policy or import learning/video skills.
+The package-global `project-learning` skill registers or curates
+company/project context from any Git repository. `project-planning` stays under
+`Work/.agents/skills/` and creates intentional plans in a project's `Plans/`
+directory. Neither may silently change company policy or import learning/video
+skills.
 
 An execution checklist used only by the current coding session stays with that
 session or repository. Obsidian plans are for stable outcomes, constraints,

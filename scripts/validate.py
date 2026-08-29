@@ -48,7 +48,6 @@ REQUIRED = (
 EXPECTED_PACKS = {
     "template/Learning/.agents/skills/doc-learning/SKILL.md",
     "template/Learning/.agents/skills/video-learning/SKILL.md",
-    "template/Work/.agents/skills/project-learning/SKILL.md",
     "template/Work/.agents/skills/project-planning/SKILL.md",
     "template/Studio/Video/.agents/skills/video-research/SKILL.md",
     "template/Studio/Video/.agents/skills/video-concept/SKILL.md",

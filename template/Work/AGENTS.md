@@ -11,8 +11,9 @@ change.
   this guide or each project.
 - Project facts live in `Projects/<Project>/Project.md` and inherit their
   parent company context.
-- `project-learning` and `project-planning` may be used only when installed
-  under `Work/.agents/skills/`.
+- The package-global `project-learning` skill may register or curate this
+  context from any repository. `project-planning` remains scoped under
+  `Work/.agents/skills/`.
 - Do not load Learning or Studio/Video context for ordinary coding work.
 - Do not record secrets, personal performance data, or restricted incident
   details. Link to an authorized system of record instead.
