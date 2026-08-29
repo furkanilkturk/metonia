@@ -31,6 +31,9 @@ installed to inspect the resolved space and active skill commands.
 
 - Enter the smallest owning directory before launching an agent.
 - Read canonical pages before acting; instructions route, pages remember.
+- Load context progressively: the company/project capsule first, a focused
+  indexed note only when its `load when` condition matches, and the full
+  canonical page only for curation or whole-note review.
 - Keep source evidence, company operations, project execution, and video work
   separate unless a user explicitly asks to connect them.
 - For an uncertain write, prepare a compact preview: target page, proposed

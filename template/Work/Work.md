@@ -17,6 +17,11 @@ the canonical repository remote and its parent company supplies how work is
 actually done. See [[Companies/Index]], [[Companies/_templates/Company]], and
 [[Project Lifecycle]].
 
+Routine coding context uses only the `## Context capsule` in the matched company
+and project. Planning additionally sees their decision/improvement queues and
+context indexes. Detailed engineering notes are opt-in through a precise `load
+when` link, so context grows with the project without every agent paying for it.
+
 ## Skills
 
 The package-global `project-learning` skill registers or curates

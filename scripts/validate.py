@@ -60,13 +60,30 @@ PRIVATE_TEXT = re.compile(
 )
 REMOTE_LINE = re.compile(r"^repository:\s*(.+?)\s*$", re.MULTILINE)
 COMPANY_HEADINGS = (
+    "## Context capsule",
     "## Purpose, customers, and business model",
     "## Operating model",
     "## Domain vocabulary",
     "## Engineering and delivery",
     "## Security, privacy, and compliance",
     "## Shared platforms and cross-project decisions",
+    "## Decisions and improvement queue",
+    "## Context index",
 )
+PROJECT_HEADINGS = (
+    "## Context capsule",
+    "## Decisions and improvement queue",
+    "## Context index",
+)
+SENSITIVITIES = {"public", "internal", "restricted"}
+DECISION_STATES = {
+    "accepted-constraint",
+    "accepted-debt",
+    "open-question",
+    "deferred",
+    "rejected-alternative",
+    "superseded",
+}
 
 
 def markdown_files() -> list[Path]:
@@ -120,6 +137,48 @@ def has_frontmatter_value(text: str, key: str, expected: str) -> bool:
     return bool(re.search(rf"^{re.escape(key)}:\s*{re.escape(expected)}\s*$", frontmatter, re.MULTILINE))
 
 
+def frontmatter_value(text: str, key: str) -> str | None:
+    if not text.startswith("---\n"):
+        return None
+    frontmatter = text.split("---", 2)[1]
+    match = re.search(rf"^{re.escape(key)}:\s*(.*?)\s*$", frontmatter, re.MULTILINE)
+    return match.group(1).strip().strip("\"'") if match else None
+
+
+def validate_decision_queue(
+    path: Path,
+    text: str,
+    findings: list[str],
+    seen_ids: dict[str, Path],
+) -> None:
+    heading = "## Decisions and improvement queue"
+    start = text.find(heading)
+    if start < 0:
+        return
+    rest = text[start + len(heading) :]
+    next_heading = re.search(r"^##\s+", rest, re.MULTILINE)
+    section = rest[: next_heading.start()] if next_heading else rest
+    for line in section.splitlines():
+        if not line.strip().startswith("|"):
+            continue
+        columns = [column.strip() for column in line.strip().strip("|").split("|")]
+        if len(columns) != 5 or columns[0] in {"ID", ""} or set(columns[0]) == {"-"}:
+            continue
+        decision_id, state, statement, evidence, trigger = columns
+        if not re.fullmatch(r"[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d{3}", decision_id):
+            findings.append(f"invalid decision ID in {path.relative_to(ROOT)}: {decision_id}")
+        elif decision_id in seen_ids:
+            findings.append(
+                f"duplicate decision ID {decision_id}: {path.relative_to(ROOT)} and {seen_ids[decision_id].relative_to(ROOT)}"
+            )
+        else:
+            seen_ids[decision_id] = path
+        if state not in DECISION_STATES:
+            findings.append(f"invalid decision state in {path.relative_to(ROOT)}: {state}")
+        if not statement or not evidence or not trigger:
+            findings.append(f"incomplete decision queue row in {path.relative_to(ROOT)}: {decision_id}")
+
+
 def link_resolves(path: Path, target: str, pages: set[str], basenames: set[str]) -> bool:
     target = target.split("|", 1)[0].split("#", 1)[0].strip()
     if not target or target.startswith(("http:", "https:", "mailto:")):
@@ -138,6 +197,7 @@ def link_resolves(path: Path, target: str, pages: set[str], basenames: set[str])
 
 def main() -> int:
     findings: list[str] = []
+    seen_decision_ids: dict[str, Path] = {}
     for relative in REQUIRED:
         if not (ROOT / relative).is_file():
             findings.append(f"missing required file: {relative}")
@@ -192,6 +252,19 @@ def main() -> int:
         text = project.read_text(encoding="utf-8")
         if not has_frontmatter_value(text, "company", parts[0]):
             findings.append(f"project company frontmatter mismatch: {project.relative_to(ROOT)}")
+        if frontmatter_value(text, "context_schema") != "1":
+            findings.append(f"project context_schema must be 1: {project.relative_to(ROOT)}")
+        if frontmatter_value(text, "sensitivity") not in SENSITIVITIES:
+            findings.append(f"project sensitivity is missing or invalid: {project.relative_to(ROOT)}")
+        verified_commit = frontmatter_value(text, "verified_commit")
+        if verified_commit and not re.fullmatch(r"[0-9a-f]{40}", verified_commit):
+            findings.append(f"project verified_commit is not a full lowercase SHA: {project.relative_to(ROOT)}")
+        missing = [heading for heading in PROJECT_HEADINGS if heading not in text]
+        if missing:
+            findings.append(
+                f"project context contract incomplete: {project.relative_to(ROOT)} ({'; '.join(missing)})"
+            )
+        validate_decision_queue(project, text, findings, seen_decision_ids)
         remotes = project_remotes(text)
         if not remotes:
             findings.append(f"project has no repository identity: {project.relative_to(ROOT)}")
@@ -213,11 +286,14 @@ def main() -> int:
         text = company.read_text(encoding="utf-8")
         if not (company.parent / "AGENTS.md").is_file():
             findings.append(f"company has no AGENTS.md: {company.relative_to(ROOT)}")
+        if frontmatter_value(text, "sensitivity") not in SENSITIVITIES:
+            findings.append(f"company sensitivity is missing or invalid: {company.relative_to(ROOT)}")
         missing = [heading for heading in COMPANY_HEADINGS if heading not in text]
         if missing:
             findings.append(
                 f"company operating context incomplete: {company.relative_to(ROOT)} ({'; '.join(missing)})"
             )
+        validate_decision_queue(company, text, findings, seen_decision_ids)
 
     plan_template = project_root / "_templates" / "Plan.md"
     try:

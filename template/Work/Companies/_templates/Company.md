@@ -2,6 +2,7 @@
 tags: [template, company]
 status: template
 company: <company-name>
+sensitivity: <public|internal|restricted>
 ---
 
 # <Company name>
@@ -9,6 +10,15 @@ company: <company-name>
 > This is the canonical operating-context page for the company. Keep it factual,
 > current, and appropriately private. Project pages inherit this context rather
 > than cloning it.
+
+## Context capsule
+
+<!-- Every project may receive this section. Keep it sparse and company-wide. -->
+
+- Company outcome/customer constraint that changes project decisions:
+- Decision owner and escalation boundary:
+- Cross-project engineering, delivery, or data rule:
+- Security/privacy approval gate:
 
 ## Purpose, customers, and business model
 
@@ -47,6 +57,19 @@ company: <company-name>
 
 - Platform or standard — why it exists and who owns it.
 - Link durable decisions in this folder; do not copy project-local decisions.
+
+## Decisions and improvement queue
+
+| ID | State | Decision or improvement | Evidence | Planning trigger |
+|---|---|---|---|---|
+| | | | | |
+
+This table is the canonical active state. A detailed Decision note may preserve
+rationale/history under the same ID, but must not own a competing state.
+
+## Context index
+
+- Add a focused company note only with a precise `load when` condition.
 
 ## Projects and context health
 

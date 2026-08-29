@@ -2,12 +2,24 @@
 tags: [company, example]
 status: fictional-example
 company: Example Company
+sensitivity: public
 ---
 
 # Example Company
 
 > Fictional example only. Replace this folder in a private vault; do not treat
 > it as a source of real company policy.
+
+## Context capsule
+
+- Optimize for understandable shared notes; clarity and reliability outrank
+  feature volume.
+- Product owns outcomes, engineering owns execution, and the directly
+  responsible owner decides reversible changes.
+- Difficult-to-reverse product or architecture changes need joint product and
+  engineering approval.
+- Customer content is private by default; data-handling changes require product
+  and security review.
 
 ## Purpose, customers, and business model
 
@@ -52,6 +64,16 @@ company: Example Company
 
 - [[Projects/Atlas Notes/Project]] inherits this operating context.
 - Durable company decisions belong in this folder; project decisions stay local.
+
+## Decisions and improvement queue
+
+| ID | State | Decision or improvement | Evidence | Planning trigger |
+|---|---|---|---|---|
+| EX-001 | accepted-constraint | Customer content remains private by default. | Fictional company policy | Any data-handling change |
+
+## Context index
+
+- No optional company context notes are needed for this fictional example.
 
 ## Context health
 

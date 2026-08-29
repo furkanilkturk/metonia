@@ -27,6 +27,7 @@ supersedes:
 - Company or project constraints:
 - Dependencies and ownership:
 - Reversibility boundary:
+- Decision/improvement queue IDs considered (including explicitly not relevant):
 
 ## Decisions
 
