@@ -26,3 +26,11 @@ company context, but it should be private and access-controlled.
 
 When uncertain, keep a short pointer to the authorized system and ask the
 responsible owner before recording the detail here.
+
+## Delegated models
+
+An authenticated model provider is available, not automatically trusted. Before
+sending company or project notes to a child agent, constrain the destination
+with an exact model, ordered exact model candidates, or an explicit provider or
+model allowlist. Keep private context out of delegated prompts when the task
+does not need it. An explicitly empty allowlist means no provider is allowed.

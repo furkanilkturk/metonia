@@ -41,6 +41,15 @@ installed to inspect the resolved space and active skill commands.
 - Keep runtime task plans in the repository or Pi session. Persist a Work plan
   only when people should revisit its outcome, decisions, milestones,
   validation, and ownership after the session ends.
+- Keep the current agent as the default execution owner. Use a subagent only
+  when a bounded handoff has a concrete benefit such as parallelism, context
+  isolation, lower cost, specialization, or independent verification.
+- Do not force planner-builder-reviewer stages. A well-specified low-risk task
+  can be completed directly by the current agent or one efficient child;
+  additional review and retry calls need their own justification.
+- Treat model choice as a portable policy, not a vendor assumption. Exact
+  `provider/model` candidates may express intentional fallback order; context
+  capacity decides eligibility, not intelligence.
 
 ## New space checklist
 
