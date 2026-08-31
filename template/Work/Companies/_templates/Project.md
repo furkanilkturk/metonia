@@ -67,10 +67,24 @@ rationale/history under the same ID, but must not own a competing state.
 
 | Note | Load when | Sensitivity | Max bytes |
 |---|---|---|---|
-| `Context/<focused note>.md` | <specific task condition> | <public/internal/restricted> | <budget> |
+| `Context/Repository Atlas.md` | Locating ownership, routes, entry points, tests, generated boundaries, or verification for a task | <public/internal/restricted> | 16384 |
+| `Context/Engineering Contracts.md` | Changing code, package usage, schemas, validation, persistence, APIs, authorization, or tests | <public/internal/restricted> | 16384 |
+| `Context/Product and Domain Map.md` | Planning or changing product behavior, actors, entities, invariants, permissions, or cross-domain effects | <public/internal/restricted> | 16384 |
+| `Context/Delivery and Operations.md` | Build, CI, migrations, deployment, environments, storage, backup, release, or runtime operations | <public/internal/restricted> | 16384 |
 
-Link the note after it exists. Keep optional detail out of the capsule; do not
-create empty context notes.
+These are the default mature-repository slices, not mandatory empty files.
+Link only notes that exist, merge slices for a small repository, and add a
+different focused note when its `load when` condition is more precise. Keep
+optional detail out of the capsule.
+
+## Repository coverage and freshness
+
+- Verified commit and tree:
+- Tracked file and directory totals:
+- Inventory hash and category ledger location:
+- Generated, vendor, or intentionally excluded boundaries:
+- Dirty paths observed during review:
+- Freshness trigger:
 
 ## Durable plans
 

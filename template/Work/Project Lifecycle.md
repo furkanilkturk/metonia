@@ -18,16 +18,27 @@ to `Work/`, while Learning and Video skills stay out of coding-agent context.
 3. Invoke `/skill:project-learning register-existing`. Include the repository
    path when Pi is running from `Work/`; the current directory is used when Pi
    is running inside the repository.
-4. The skill performs a bounded evidence scan, separates current code,
-   normative rules, intended plans, and historical material, then proposes an
-   identity mapping and a compact engineering capsule.
-5. If one high-consequence pattern conflict exists, answer or defer the
+4. The skill inventories every tracked file and directory before semantic
+   reading. It records the repository HEAD/tree, dirty paths, remotes, category
+   counts, and a deterministic inventory hash so no file family disappears
+   from coverage merely because it was not sampled.
+5. The semantic pass follows authoritative instructions, manifests,
+   composition roots, schemas, routes, tests, delivery files, and representative
+   domain slices. It separates current code, normative rules, intended plans,
+   generated artifacts, and historical material.
+6. For a mature repository, require a compact `Project.md` plus focused notes
+   for repository ownership, engineering contracts, product/domain behavior,
+   and delivery/operations. Every non-empty inventory category must be marked
+   covered, generated, vendor, not applicable, or an open question with
+   evidence. Small repositories may use fewer notes when the same coverage is
+   explicit.
+7. If one high-consequence pattern conflict exists, answer or defer the
    selectable question. The answer receives a stable decision/improvement ID;
    later plans must consult it instead of rediscovering the chat.
-6. Approve or correct the identity mapping and engineering claims separately.
+8. Approve or correct the identity mapping and engineering claims separately.
    Registration rechecks repository HEAD/dirty paths and target-note fingerprints
    before writing.
-7. Future coding sessions use the compact `coding` context profile by default;
+9. Future coding sessions use the compact `coding` context profile by default;
    planning adds the queue/index and `full` is an explicit whole-note review.
    A matching indexed note is fetched in a second `notesOnly` call with an
    explicit `project:` or `company:` target, so base context is not duplicated.
@@ -51,12 +62,15 @@ creates the durable Metonia mapping around a repository that already exists.
 1. Finish implementation, tests, and review in the coding repository.
 2. In a clean curator session inside the repository, invoke
    `/skill:project-learning propose-update` with the verified change evidence.
-3. Accept only facts that will remain useful: package usage contracts,
+3. Regenerate the structural inventory and compare its HEAD, tree, hash,
+   categories, and dirty paths with the last recorded provenance. Review
+   semantically only the changed categories and any contracts they affect.
+4. Accept only facts that will remain useful: package usage contracts,
    architecture boundaries, operating rules, accepted decisions,
    quality/release practice, or a changed repository identity. Put detailed
    examples behind a context-index link with a precise `load when` condition.
-4. Review the exact proposal, then approve the selected `Company.md` or
-   `Project.md` edits.
+5. Review the exact proposal, then approve the selected `Company.md`,
+   `Project.md`, or focused context-note edits.
 
 Do not copy task status, diffs, chat, logs, tokens, temporary paths, or an
 unreviewed inference into company/project knowledge.

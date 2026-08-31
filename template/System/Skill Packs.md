@@ -19,6 +19,11 @@ below.
 The Pi package installs `metonia-context`, `metonia-interview`, and
 `project-learning` globally. Only their discovery metadata is visible until a
 skill is invoked; their full instructions are not copied into every prompt.
+When invoked, `project-learning` accounts for every tracked repository path
+structurally, then performs targeted semantic passes. Detailed repository,
+engineering, domain, and operations notes remain behind the project's context
+index, so routine coding receives the compact capsule instead of the whole
+knowledge base.
 
 Install or copy only the pack needed by the space. A skill is invoked on demand;
 its description may be visible at startup, but its full instructions should not
