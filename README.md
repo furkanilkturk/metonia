@@ -65,6 +65,11 @@ During existing-project registration, the native selector includes `Other` so
 any fitting authenticated session model can be found even when it is absent
 from the short recommendation list. Delegation is read-only; the parent agent
 validates the research and remains the sole owner of questions and vault edits.
+With separate approval, reusable project contracts can link into Learning
+concepts. Each concept keeps project-specific applications as distinct examples
+with backlinks to their Work evidence, so `Zod` can describe how MechFlow uses
+`zod/mini` today and later compare another project's different convention
+without loading Learning into ordinary coding context.
 
 The template contains no required plugin, runtime, telemetry, or cloud service.
 It uses fictional samples only. Keep private company context in a private vault

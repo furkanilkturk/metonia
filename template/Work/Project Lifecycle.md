@@ -24,8 +24,8 @@ to `Work/`, while Learning and Video skills stay out of coding-agent context.
    from coverage merely because it was not sampled.
 5. Choose who performs the semantic discovery in Pi's native selector. It
    offers the current agent when it fits, an automatic authenticated choice, a
-   short exact list, and `Other`, which searches every fitting model available to the
-   current Pi session—including models the shortlist did not anticipate. A
+   short exact list, and `Other`, which searches every fitting model available
+   to the current Pi session—including models the shortlist did not anticipate. A
    delegated choice is exact and task-scoped; the child is read-only and the
    parent still validates evidence, asks questions, and owns every vault write.
 6. The semantic pass follows authoritative instructions, manifests,
@@ -38,13 +38,18 @@ to `Work/`, while Learning and Video skills stay out of coding-agent context.
    covered, generated, vendor, not applicable, or an open question with
    evidence. Small repositories may use fewer notes when the same coverage is
    explicit.
-8. If one high-consequence pattern conflict exists, answer or defer the
+8. Optionally approve reusable concept links separately. A local engineering
+   contract may link to an exact Learning concept, whose `Project applications`
+   section records MechFlow-style or other project-specific usage as separate
+   examples with backlinks. These links do not load Learning into coding
+   context and never turn one project's choice into a universal rule.
+9. If one high-consequence pattern conflict exists, answer or defer the
    selectable question. The answer receives a stable decision/improvement ID;
    later plans must consult it instead of rediscovering the chat.
-9. Approve or correct the identity mapping and engineering claims separately.
+10. Approve or correct the identity mapping and engineering claims separately.
    Registration rechecks repository HEAD/dirty paths and target-note fingerprints
    before writing.
-10. Future coding sessions use the compact `coding` context profile by default;
+11. Future coding sessions use the compact `coding` context profile by default;
    planning adds the queue/index and `full` is an explicit whole-note review.
    A matching indexed note is fetched in a second `notesOnly` call with an
    explicit `project:` or `company:` target, so base context is not duplicated.

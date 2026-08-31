@@ -54,6 +54,7 @@ EXPECTED_PACKS = {
     "template/Studio/Video/.agents/skills/video-review/SKILL.md",
 }
 WIKILINK = re.compile(r"(?<!!)\[\[([^\]]+)\]\]")
+UNESCAPED_PIPE = re.compile(r"(?<!\\)\|")
 PRIVATE_TEXT = re.compile(
     r"C:\\Users\\|/Users/[^/<]+/|BEGIN (?:RSA |OPENSSH )?PRIVATE KEY",
     re.IGNORECASE,
@@ -180,7 +181,7 @@ def validate_decision_queue(
 
 
 def link_resolves(path: Path, target: str, pages: set[str], basenames: set[str]) -> bool:
-    target = target.split("|", 1)[0].split("#", 1)[0].strip()
+    target = re.split(r"\\?\|", target, maxsplit=1)[0].split("#", 1)[0].strip()
     if not target or target.startswith(("http:", "https:", "mailto:")):
         return True
     target = target.removesuffix(".md")
@@ -211,6 +212,15 @@ def main() -> int:
                 findings.append(
                     f"broken wikilink in {path.relative_to(ROOT)}: [[{match.group(1)}]]"
                 )
+        for line_number, line in enumerate(text.splitlines(), start=1):
+            if not line.lstrip().startswith("|"):
+                continue
+            for match in WIKILINK.finditer(line):
+                if UNESCAPED_PIPE.search(match.group(1)):
+                    findings.append(
+                        "unescaped wikilink alias separator in Markdown table: "
+                        f"{path.relative_to(ROOT)}:{line_number}"
+                    )
 
     for path in ROOT.rglob("*"):
         if (

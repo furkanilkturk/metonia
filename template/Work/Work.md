@@ -21,6 +21,9 @@ Routine coding context uses only the `## Context capsule` in the matched company
 and project. Planning additionally sees their decision/improvement queues and
 context indexes. Detailed engineering notes are opt-in through a precise `load
 when` link, so context grows with the project without every agent paying for it.
+Engineering notes may link reusable terms to `Learning/Concepts`; those links
+are navigation, not automatically loaded coding context. The Work note remains
+the authority for what a particular project requires.
 
 ## Skills
 
