@@ -22,23 +22,29 @@ to `Work/`, while Learning and Video skills stay out of coding-agent context.
    reading. It records the repository HEAD/tree, dirty paths, remotes, category
    counts, and a deterministic inventory hash so no file family disappears
    from coverage merely because it was not sampled.
-5. The semantic pass follows authoritative instructions, manifests,
+5. Choose who performs the semantic discovery in Pi's native selector. It
+   offers the current agent when it fits, an automatic authenticated choice, a
+   short exact list, and `Other`, which searches every fitting model available to the
+   current Pi session—including models the shortlist did not anticipate. A
+   delegated choice is exact and task-scoped; the child is read-only and the
+   parent still validates evidence, asks questions, and owns every vault write.
+6. The semantic pass follows authoritative instructions, manifests,
    composition roots, schemas, routes, tests, delivery files, and representative
    domain slices. It separates current code, normative rules, intended plans,
    generated artifacts, and historical material.
-6. For a mature repository, require a compact `Project.md` plus focused notes
+7. For a mature repository, require a compact `Project.md` plus focused notes
    for repository ownership, engineering contracts, product/domain behavior,
    and delivery/operations. Every non-empty inventory category must be marked
    covered, generated, vendor, not applicable, or an open question with
    evidence. Small repositories may use fewer notes when the same coverage is
    explicit.
-7. If one high-consequence pattern conflict exists, answer or defer the
+8. If one high-consequence pattern conflict exists, answer or defer the
    selectable question. The answer receives a stable decision/improvement ID;
    later plans must consult it instead of rediscovering the chat.
-8. Approve or correct the identity mapping and engineering claims separately.
+9. Approve or correct the identity mapping and engineering claims separately.
    Registration rechecks repository HEAD/dirty paths and target-note fingerprints
    before writing.
-9. Future coding sessions use the compact `coding` context profile by default;
+10. Future coding sessions use the compact `coding` context profile by default;
    planning adds the queue/index and `full` is an explicit whole-note review.
    A matching indexed note is fetched in a second `notesOnly` call with an
    explicit `project:` or `company:` target, so base context is not duplicated.

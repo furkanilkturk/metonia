@@ -61,6 +61,10 @@ efficient child without planner and reviewer stages. Routing is provider
 agnostic: it works from Pi's authenticated model catalog, ordered exact
 `provider/model` candidates, and explicit provider/model trust allowlists. No
 vendor is required or silently treated as trusted for private company context.
+During existing-project registration, the native selector includes `Other` so
+any fitting authenticated session model can be found even when it is absent
+from the short recommendation list. Delegation is read-only; the parent agent
+validates the research and remains the sole owner of questions and vault edits.
 
 The template contains no required plugin, runtime, telemetry, or cloud service.
 It uses fictional samples only. Keep private company context in a private vault

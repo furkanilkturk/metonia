@@ -23,7 +23,10 @@ When invoked, `project-learning` accounts for every tracked repository path
 structurally, then performs targeted semantic passes. Detailed repository,
 engineering, domain, and operations notes remain behind the project's context
 index, so routine coding receives the compact capsule instead of the whole
-knowledge base.
+knowledge base. Before an expensive existing-project scan, its bundled native
+model selector reads the current authenticated Pi catalog. `Other` searches all
+fitting session models; a delegated selection is one exact, read-only discovery
+task whose evidence remains subject to parent review.
 
 Install or copy only the pack needed by the space. A skill is invoked on demand;
 its description may be visible at startup, but its full instructions should not
